@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 public class MainViewEventHandler {
 
 	@FXML
-	private Button button;
+	private Button buttonOpenFolderTemp;
 
-	public void buttonOnClick() {
+	public void buttonOpenFolderTempOnClick() {
 
 	}
 }

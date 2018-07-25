@@ -10,7 +10,7 @@
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="button" mnemonicParsing="false" onAction="#buttonOnClick" text="Button" />
+            <Button fx:id="buttonOpenFolderTemp" mnemonicParsing="false" onAction="#buttonOpenFolderTempOnClick" text="Button" />
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
