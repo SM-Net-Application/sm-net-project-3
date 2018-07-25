@@ -43,9 +43,8 @@ public class MainViewEventHandler {
 	}
 
 	private void checkTempFolder() {
-
+		truncateTableTempFile();
 		checkDirectory(References.DIR_TEMP);
-
 	}
 
 	private void checkDirectory(File directory) {
@@ -62,14 +61,19 @@ public class MainViewEventHandler {
 	}
 
 	private void checkFile(File file) {
+		if (file.getName().compareTo("Thumbs.db") != 0)
+			insertToDb(file);
+	}
 
-		insertToDb(file);
-		
+	private void truncateTableTempFile() {
+		EasyH2QueryBuilder builder = new EasyH2QueryBuilder(Database.SCHEMA, Database.TAB_FILETEMP);
+		database.runOperation(builder.buildTruncateTable());
 	}
 
 	private void insertToDb(File file) {
 		EasyH2QueryBuilder builder = new EasyH2QueryBuilder(Database.SCHEMA, Database.TAB_FILETEMP);
 		builder.addUpdate("FILEPATH", file.getAbsolutePath());
+		database.runOperation(builder.buildInsertQuery());
 	}
 
 	public void init() {
