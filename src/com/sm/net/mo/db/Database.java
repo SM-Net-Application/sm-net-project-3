@@ -1,20 +1,14 @@
 package com.sm.net.mo.db;
 
-import java.io.File;
-
 import com.sm.net.easy.h2.db.EasyH2Column;
 import com.sm.net.easy.h2.db.EasyH2Database;
 import com.sm.net.easy.h2.db.EasyH2Schema;
 import com.sm.net.easy.h2.db.EasyH2Table;
 import com.sm.net.easy.h2.util.H2DataTypes;
-import com.sm.net.mo.Main;
-import com.sm.net.mo.util.FileUtil;
+import com.sm.net.mo.References;
 
 public class Database {
 
-	public static final File DB_DIRECTORY = 
-			FileUtil.createDirectory(FileUtil.addSubfolder(Main.RESOURCES_ABSOLUTE_PATH, "Database"));
-	
 	public static final String DB_FILENAME = "database";
 	public static final String DB_USERNAME = "admin";
 	public static final String DB_PASSWORD = "";
@@ -24,10 +18,10 @@ public class Database {
 
 	public static EasyH2Database createDatabase() {
 
-		EasyH2Database database = new EasyH2Database(DB_DIRECTORY, DB_FILENAME, DB_USERNAME, DB_PASSWORD, true);
+		EasyH2Database database = new EasyH2Database(References.DIR_DB, DB_FILENAME, DB_USERNAME, DB_PASSWORD, true);
 		database.createSchema(new EasyH2Schema(SCHEMA, true));
 		database.createTable(getTableFileTemp());
-		
+
 		return database;
 	}
 
