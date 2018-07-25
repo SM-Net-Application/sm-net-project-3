@@ -3,6 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/h2-1.4.195.jar"/>
-	<classpathentry kind="lib" path="lib/sm-net-easy-h2-1807181541.jar"/>
+	<classpathentry kind="lib" path="lib/sm-net-util-1807251522.jar"/>
+	<classpathentry kind="lib" path="lib/sm-net-fx-1807251629.jar"/>
+	<classpathentry kind="lib" path="lib/sm-net-easy-h2-1807251654.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

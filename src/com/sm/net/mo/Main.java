@@ -53,6 +53,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 
 			primaryStage.setTitle(AppInfos.getAppName());
+			primaryStage.setMaximized(true);
 			primaryStage.getIcons().add(new Image(References.getAppIconUrl()));
 
 			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -66,6 +67,7 @@ public class Main extends Application {
 
 			MainViewEventHandler controller = (MainViewEventHandler) fxmlLoader.getController();
 			controller.setDatabase(this.database);
+			controller.setStage(primaryStage);
 			controller.init();
 
 			primaryStage.show();
