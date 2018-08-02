@@ -15,12 +15,14 @@ public class Database {
 
 	public static final String SCHEMA = "MEMORGANIZER";
 	public static final String TAB_FILETEMP = "FILETEMP";
+	public static final String TAB_FILENOTANALYZABLE = "FILENOTANALYZABLE";
 
 	public static EasyH2Database createDatabase() {
 
 		EasyH2Database database = new EasyH2Database(References.DIR_DB, DB_FILENAME, DB_USERNAME, DB_PASSWORD, true);
 		database.createSchema(new EasyH2Schema(SCHEMA, true));
 		database.createTable(getTableFileTemp());
+		database.createTable(getTableFileNotAnalyzable());
 
 		return database;
 	}
@@ -32,7 +34,22 @@ public class Database {
 		return fileTemp;
 	}
 
+	private static EasyH2Table getTableFileNotAnalyzable() {
+		EasyH2Table fileTemp = new EasyH2Table(TAB_FILENOTANALYZABLE, SCHEMA, true);
+		fileTemp.addColumn(getColumnsFileNotAnalyzable());
+
+		return fileTemp;
+	}
+
 	private static EasyH2Column[] getColumnsFileTemp() {
+
+		EasyH2Column id = new EasyH2Column("ID", H2DataTypes.INT, true, true);
+		EasyH2Column filePath = new EasyH2Column("FILEPATH", H2DataTypes.VARCHAR, true, 260);
+
+		return new EasyH2Column[] { id, filePath };
+	}
+
+	private static EasyH2Column[] getColumnsFileNotAnalyzable() {
 
 		EasyH2Column id = new EasyH2Column("ID", H2DataTypes.INT, true, true);
 		EasyH2Column filePath = new EasyH2Column("FILEPATH", H2DataTypes.VARCHAR, true, 260);
